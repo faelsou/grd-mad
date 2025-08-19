@@ -12,13 +12,13 @@ const CTA = () => {
               Vamos criar algo <span className="text-amber-500">único</span> juntos?
             </h2>
             <p className="text-xl text-stone-300 mb-10 max-w-3xl mx-auto">
-              Entre em contato conosco e descubra como podemos transformar seus sonhos 
-              em realidade com móveis planejados de alta qualidade.
+              Entre em contato conosco e descubra como nossa fábrica pode atender suas necessidades 
+              com móveis planejados de alta qualidade e tecnologia de ponta.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <a 
-                href="https://wa.me/5511945237617?text=Olá! Gostaria de solicitar um orçamento para móveis planejados."
+                href="https://wa.me/5511945237617?text=Olá! Gostaria de solicitar um orçamento na GRD MAD."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group bg-amber-500 hover:bg-amber-600 text-stone-900 px-8 py-4 rounded-lg font-bold text-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
@@ -29,11 +29,11 @@ const CTA = () => {
               </a>
               
               <a 
-                href="mailto:contato@studiorplanejados.com.br?subject=Interesse em Parceria"
+                href="mailto:contato@grdmad.com.br?subject=Quero ser cliente GRD MAD"
                 className="group border-2 border-stone-400 hover:border-amber-500 text-stone-200 hover:text-amber-500 px-8 py-4 rounded-lg font-bold text-lg transition-all duration-300 flex items-center justify-center gap-2"
               >
                 <Users size={20} />
-                Seja nosso parceiro
+                Seja nosso cliente
               </a>
             </div>
           </div>
@@ -54,8 +54,8 @@ const CTA = () => {
                 <Mail size={28} />
               </div>
               <h3 className="text-xl font-bold text-stone-50 mb-2">E-mail</h3>
-              <p className="text-stone-300">contato@studiorplanejados.com.br</p>
-              <p className="text-stone-300">orcamento@studiorplanejados.com.br</p>
+              <p className="text-stone-300">contato@grdmad.com.br</p>
+              <p className="text-stone-300">orcamento@grdmad.com.br</p>
             </div>
 
             <div className="group">
@@ -63,8 +63,8 @@ const CTA = () => {
                 <MapPin size={28} />
               </div>
               <h3 className="text-xl font-bold text-stone-50 mb-2">Endereço</h3>
-              <p className="text-stone-300">Rua dos Móveis, 123</p>
-              <p className="text-stone-300">São Paulo - SP</p>
+              <p className="text-stone-300">KM 21 da Raposo Tavares</p>
+              <p className="text-stone-300">Granja Viana - Cotia - SP</p>
             </div>
           </div>
         </div>

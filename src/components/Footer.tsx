@@ -10,11 +10,11 @@ const Footer = () => {
             {/* Company Info */}
             <div className="md:col-span-2">
               <h3 className="text-2xl font-bold text-stone-50 mb-4">
-                Studio R <span className="text-amber-500">Planejados</span>
+                GRD <span className="text-amber-500">MAD</span>
               </h3>
               <p className="text-stone-400 leading-relaxed mb-6">
-                Referência em móveis planejados de alto padrão, oferecendo soluções 
-                exclusivas para projetos residenciais e corporativos há mais de 15 anos.
+                Fábrica de móveis planejados com capacidade de produção de mais de 2000 chapas por mês. 
+                Tecnologia de ponta com método de marcenaria 4.0.
               </p>
               
               <div className="flex space-x-4">
@@ -34,9 +34,8 @@ const Footer = () => {
             <div>
               <h4 className="text-lg font-semibold text-stone-50 mb-4">Links Rápidos</h4>
               <ul className="space-y-2">
-                <li><a href="#sobre" className="hover:text-amber-500 transition-colors">Sobre</a></li>
+                <li><a href="#fabrica" className="hover:text-amber-500 transition-colors">Fábrica</a></li>
                 <li><a href="#diferenciais" className="hover:text-amber-500 transition-colors">Diferenciais</a></li>
-                <li><a href="#solucoes" className="hover:text-amber-500 transition-colors">Soluções</a></li>
                 <li><a href="#portfolio" className="hover:text-amber-500 transition-colors">Portfólio</a></li>
                 <li><a href="#contato" className="hover:text-amber-500 transition-colors">Contato</a></li>
               </ul>
@@ -49,8 +48,8 @@ const Footer = () => {
                 <li><span className="hover:text-amber-500 transition-colors cursor-pointer">Cozinhas Planejadas</span></li>
                 <li><span className="hover:text-amber-500 transition-colors cursor-pointer">Salas e Ambientes</span></li>
                 <li><span className="hover:text-amber-500 transition-colors cursor-pointer">Quartos e Closets</span></li>
-                <li><span className="hover:text-amber-500 transition-colors cursor-pointer">Móveis Corporativos</span></li>
-                <li><span className="hover:text-amber-500 transition-colors cursor-pointer">Projetos Especiais</span></li>
+                <li><span className="hover:text-amber-500 transition-colors cursor-pointer">Marcenaria 4.0</span></li>
+                <li><span className="hover:text-amber-500 transition-colors cursor-pointer">Produção Industrial</span></li>
               </ul>
             </div>
           </div>
@@ -59,7 +58,7 @@ const Footer = () => {
 
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-stone-400 text-sm">
-              © 2024 Studio R Planejados. Todos os direitos reservados.
+              © 2024 GRD MAD. Todos os direitos reservados.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0 text-sm">
               <a href="#" className="hover:text-amber-500 transition-colors">Política de Privacidade</a>

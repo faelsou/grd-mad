@@ -22,8 +22,11 @@ export default {
         },
         amber: {
           400: '#fbbf24',
-          500: '#C5A572',
+          500: '#E2B33E',
           600: '#d97706',
+        },
+        gold: {
+          500: '#E2B33E',
         },
       },
       animation: {

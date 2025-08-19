@@ -14,9 +14,8 @@ const Header = () => {
   }, []);
 
   const menuItems = [
-    { label: 'Sobre', href: '#sobre' },
+    { label: 'Fábrica', href: '#fabrica' },
     { label: 'Diferenciais', href: '#diferenciais' },
-    { label: 'Soluções', href: '#solucoes' },
     { label: 'Portfólio', href: '#portfolio' },
     { label: 'Contato', href: '#contato' }
   ];
@@ -27,8 +26,15 @@ const Header = () => {
     }`}>
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between py-4">
-          <div className="text-2xl font-bold text-stone-50">
-            Studio R <span className="text-amber-500">Planejados</span>
+          <div className="flex items-center">
+            <img 
+              src="/Oficial (1).png" 
+              alt="GRD MAD Logo" 
+              className="h-12 w-auto mr-3"
+            />
+            <div className="text-2xl font-bold text-stone-50">
+              GRD <span className="text-amber-500">MAD</span>
+            </div>
           </div>
 
           <nav className="hidden md:flex items-center space-x-8">
@@ -47,7 +53,7 @@ const Header = () => {
             <a href="tel:+5511945237617" className="text-amber-500 hover:text-amber-400 transition-colors">
               <Phone size={20} />
             </a>
-            <a href="mailto:contato@studiorplanejados.com.br" className="text-amber-500 hover:text-amber-400 transition-colors">
+            <a href="mailto:contato@grdmad.com.br" className="text-amber-500 hover:text-amber-400 transition-colors">
               <Mail size={20} />
             </a>
           </div>

@@ -25,14 +25,13 @@ const Hero = () => {
           </p>
           
           <p className="text-lg text-stone-300 mb-10 max-w-2xl mx-auto">
-            Transformamos ideias em realidade com precisão milimétrica, materiais nobres e 
-            execução impecável. Seja para sua casa ou para seu cliente, garantimos sofisticação, 
-            funcionalidade e prazos cumpridos.
+            Fábrica de móveis planejados com capacidade de produção de mais de 2000 chapas por mês. 
+            Tecnologia de ponta com método de marcenaria 4.0 e linha de produção exclusiva.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <a 
-              href="https://wa.me/5511945237617?text=Olá! Gostaria de solicitar um orçamento para móveis planejados."
+              href="https://wa.me/5511945237617?text=Olá! Gostaria de solicitar um orçamento na GRD MAD."
               target="_blank"
               rel="noopener noreferrer"
               className="group bg-amber-500 hover:bg-amber-600 text-stone-900 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
@@ -44,10 +43,10 @@ const Hero = () => {
             
             <a 
               href="#portfolio"
-              className="group border-2 border-stone-400 hover:border-amber-500 text-stone-200 hover:text-amber-500 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center gap-2"
+              className="group bg-amber-500 hover:bg-amber-600 text-stone-900 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
             >
-              <Play size={20} />
-              Ver Portfólio
+              <Users size={20} />
+              Seja nosso cliente
             </a>
           </div>
         </div>

@@ -23,7 +23,7 @@ const WhatsAppFloat = () => {
       isVisible ? 'opacity-100 translate-y-0' : 'opacity-100 translate-y-0'
     }`}>
       <a
-        href="https://wa.me/5511945237617?text=Olá! Gostaria de solicitar um orçamento para móveis planejados."
+        href="https://wa.me/5511945237617?text=Olá! Gostaria de solicitar um orçamento na GRD MAD."
         target="_blank"
         rel="noopener noreferrer"
         className="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 animate-pulse flex items-center justify-center"
