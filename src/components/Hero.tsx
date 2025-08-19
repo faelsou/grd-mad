@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Play, MessageCircle } from 'lucide-react';
+import { ArrowRight, Play, MessageCircle, Users } from 'lucide-react';
 
 const Hero = () => {
   return (
