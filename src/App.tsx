@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import Factory from './components/About';
+import About from './components/About';
 import Differentials from './components/Differentials';
 import Portfolio from './components/Portfolio';
 import Testimonials from './components/Testimonials';
@@ -14,7 +14,7 @@ function App() {
     <div className="min-h-screen">
       <Header />
       <Hero />
-      <Factory />
+      <About />
       <Differentials />
       <Portfolio />
       <Testimonials />

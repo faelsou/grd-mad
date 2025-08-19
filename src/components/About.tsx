@@ -1,7 +1,7 @@
 import React from 'react';
 import { Factory, Cog, MapPin, Zap } from 'lucide-react';
 
-const Factory = () => {
+const About = () => {
   const stats = [
     { icon: Factory, number: "2000+", label: "Chapas por Mês" },
     { icon: Cog, number: "4.0", label: "Marcenaria Tecnológica" },
@@ -68,3 +68,5 @@ const Factory = () => {
     </section>
   );
 };
+
+export default About;
