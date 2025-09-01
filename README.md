@@ -1,4 +1,4 @@
-# Studio R Planejados
+# GRD MAD
 
 Landing page do Studio R Planejados desenvolvida com **React**, **TypeScript**, **Vite** e **Tailwind CSS**. O projeto usa Node.js 20 e possui uma pipeline de CI para garantir a qualidade do código.
 
