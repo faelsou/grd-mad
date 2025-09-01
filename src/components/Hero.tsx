@@ -42,7 +42,7 @@ const Hero = () => {
             </a>
             
             <a 
-              href="#portfolio"
+              href="https://wa.me/5511945237617?text=Olá! Gostaria de ser cliente na GRD MAD."
               className="group bg-amber-500 hover:bg-amber-600 text-stone-900 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
             >
               <Users size={20} />

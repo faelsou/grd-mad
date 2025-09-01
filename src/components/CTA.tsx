@@ -48,7 +48,7 @@ const CTA = () => {
               </div>
               <h3 className="text-xl font-bold text-stone-50 mb-2">Contatos</h3>
               <a href="tel:+5511945237617" className="text-stone-300 hover:text-amber-500 transition-colors">(11) 94523-7617</a>
-              <p className="text-stone-300">(11) 3333-3333</p>
+              <p className="text-stone-300"></p>
               <a href="mailto:grdmadmoveis@gmail.com" className="text-stone-300 hover:text-amber-500 transition-colors">
                 grdmadmoveis@gmail.com
               </a>
@@ -59,8 +59,8 @@ const CTA = () => {
                 <MapPin size={28} />
               </div>
               <h3 className="text-xl font-bold text-stone-50 mb-2">Endereço</h3>
-              <p className="text-stone-300">KM 21 da Raposo Tavares</p>
-              <p className="text-stone-300">Granja Viana - Cotia - SP</p>
+              <p className="text-stone-300">Rua Monte Alegre, 664</p>
+              <p className="text-stone-300">Jardim Rebelato, Cotia - SP</p>
             </div>
 
             <div className="group">
