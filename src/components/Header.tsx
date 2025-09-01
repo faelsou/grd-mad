@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,10 +27,10 @@ const Header = () => {
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between py-4">
           <div className="flex items-center">
-            <img 
-              src="/Oficial (1).png" 
-              alt="GRD MAD Logo" 
-              className="h-12 w-auto mr-3"
+            <img
+              src="/logo.png"
+              alt="GRD MAD Logo"
+              className="h-12 w-auto mr-3 object-contain"
             />
             <div className="text-2xl font-bold text-stone-50">
               GRD <span className="text-amber-500">MAD</span>
@@ -49,15 +49,14 @@ const Header = () => {
             ))}
           </nav>
 
-          <div className="hidden md:flex items-center space-x-4">
+            <div className="hidden md:flex items-center">
             <a
               href="/catalogo-cores.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-amber-500 hover:bg-amber-600 text-stone-900 px-4 py-2 rounded-lg font-medium flex items-center gap-2 transition-colors"
+              className="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 hover:from-pink-600 hover:via-purple-600 hover:to-indigo-600 text-white px-4 py-2 rounded-lg font-medium inline-block transition-colors"
             >
-              <Phone size={20} />
-              Ligar
+              Catálogo de Cores
             </a>
           </div>
 
