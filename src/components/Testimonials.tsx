@@ -86,7 +86,7 @@ const Testimonials = () => {
           {/* Partners */}
           <div className="text-center">
             <h3 className="text-2xl font-bold text-stone-900 mb-8">
-              Nossos <span className="text-amber-600">Parceiros</span>
+              Nossos <span className="text-amber-600">Clientes</span>
             </h3>
             
             <div className="flex flex-wrap justify-center items-center gap-8">
