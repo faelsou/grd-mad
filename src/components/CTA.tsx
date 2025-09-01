@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Users, Phone, Mail, MapPin, MessageCircle } from 'lucide-react';
+import { ArrowRight, Users, Phone, MapPin, MessageCircle } from 'lucide-react';
 
 const CTA = () => {
   return (
@@ -28,8 +28,10 @@ const CTA = () => {
                 <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={20} />
               </a>
               
-              <a 
-                href="mailto:contato@grdmad.com.br?subject=Quero ser cliente GRD MAD"
+              <a
+                href="https://wa.me/5511945237617?text=Olá! Gostaria de ser cliente da GRD MAD."
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group border-2 border-stone-400 hover:border-amber-500 text-stone-200 hover:text-amber-500 px-8 py-4 rounded-lg font-bold text-lg transition-all duration-300 flex items-center justify-center gap-2"
               >
                 <Users size={20} />
@@ -44,18 +46,12 @@ const CTA = () => {
               <div className="flex items-center justify-center w-16 h-16 bg-amber-500 text-stone-900 rounded-full mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                 <Phone size={28} />
               </div>
-              <h3 className="text-xl font-bold text-stone-50 mb-2">Telefone</h3>
+              <h3 className="text-xl font-bold text-stone-50 mb-2">Contatos</h3>
               <a href="tel:+5511945237617" className="text-stone-300 hover:text-amber-500 transition-colors">(11) 94523-7617</a>
               <p className="text-stone-300">(11) 3333-3333</p>
-            </div>
-
-            <div className="group">
-              <div className="flex items-center justify-center w-16 h-16 bg-amber-500 text-stone-900 rounded-full mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                <Mail size={28} />
-              </div>
-              <h3 className="text-xl font-bold text-stone-50 mb-2">E-mail</h3>
-              <p className="text-stone-300">contato@grdmad.com.br</p>
-              <p className="text-stone-300">orcamento@grdmad.com.br</p>
+              <a href="mailto:grdmadmoveis@gmail.com" className="text-stone-300 hover:text-amber-500 transition-colors">
+                grdmadmoveis@gmail.com
+              </a>
             </div>
 
             <div className="group">
@@ -65,6 +61,21 @@ const CTA = () => {
               <h3 className="text-xl font-bold text-stone-50 mb-2">Endereço</h3>
               <p className="text-stone-300">KM 21 da Raposo Tavares</p>
               <p className="text-stone-300">Granja Viana - Cotia - SP</p>
+            </div>
+
+            <div className="group">
+              <div className="flex items-center justify-center w-16 h-16 bg-amber-500 text-stone-900 rounded-full mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                <MessageCircle size={28} />
+              </div>
+              <h3 className="text-xl font-bold text-stone-50 mb-2">WhatsApp</h3>
+              <a
+                href="https://wa.me/5511945237617?text=Olá! Gostaria de conversar no WhatsApp."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-green-500 hover:bg-green-600 text-stone-50 px-4 py-2 rounded-lg font-medium transition-colors"
+              >
+                Conversar no WhatsApp
+              </a>
             </div>
           </div>
         </div>
