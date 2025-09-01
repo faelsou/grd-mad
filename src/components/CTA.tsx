@@ -28,8 +28,10 @@ const CTA = () => {
                 <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={20} />
               </a>
               
-              <a 
-                href="mailto:contato@grdmad.com.br?subject=Quero ser cliente GRD MAD"
+              <a
+                href="https://wa.me/5511945237617?text=Olá! Gostaria de ser cliente da GRD MAD."
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group border-2 border-stone-400 hover:border-amber-500 text-stone-200 hover:text-amber-500 px-8 py-4 rounded-lg font-bold text-lg transition-all duration-300 flex items-center justify-center gap-2"
               >
                 <Users size={20} />
@@ -44,9 +46,12 @@ const CTA = () => {
               <div className="flex items-center justify-center w-16 h-16 bg-amber-500 text-stone-900 rounded-full mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                 <Phone size={28} />
               </div>
-              <h3 className="text-xl font-bold text-stone-50 mb-2">Telefone</h3>
+              <h3 className="text-xl font-bold text-stone-50 mb-2">Contatos</h3>
               <a href="tel:+5511945237617" className="text-stone-300 hover:text-amber-500 transition-colors">(11) 94523-7617</a>
               <p className="text-stone-300">(11) 3333-3333</p>
+              <a href="mailto:grdmadmoveis@gmail.com" className="text-stone-300 hover:text-amber-500 transition-colors">
+                grdmadmoveis@gmail.com
+              </a>
             </div>
 
             <div className="group">

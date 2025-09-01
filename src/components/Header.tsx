@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone, Mail } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -58,9 +58,6 @@ const Header = () => {
             >
               <Phone size={20} />
               Ligar
-            </a>
-            <a href="mailto:contato@grdmad.com.br" className="text-amber-500 hover:text-amber-400 transition-colors">
-              <Mail size={20} />
             </a>
           </div>
 
