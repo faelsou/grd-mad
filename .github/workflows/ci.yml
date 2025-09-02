@@ -38,30 +38,50 @@ jobs:
   deploy-to-server:
     needs: build-and-push
     runs-on: ubuntu-latest
+    # Se os secrets estão em um Environment (ex.: production), descomente:
+    # environment: production
     steps:
+      # Validação rápida para falhar cedo se faltar secret
+      - name: Check required secrets
+        run: |
+          test -n "${{ secrets.SERVER_HOST }}" || (echo "::error::Missing SERVER_HOST" && exit 1)
+          test -n "${{ secrets.SERVER_USER }}" || (echo "::error::Missing SERVER_USER" && exit 1)
+          test -n "${{ secrets.SERVER_SSH_KEY }}" || (echo "::error::Missing SERVER_SSH_KEY" && exit 1)
+
       - name: Deploy with SSH
-        uses: appleboy/ssh-action@v1.0.0
+        uses: appleboy/ssh-action@v1
+        env:
+          IMAGE_TAG: ${{ needs.build-and-push.outputs.image_tag }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }} # opcional, se imagem privada
         with:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
-          envs: IMAGE_TAG,DOCKERHUB_USERNAME
+          port: ${{ secrets.SERVER_PORT || '22' }}
+          script_stop: true
+          debug: true
+          # As envs acima serão exportadas no host remoto
+          envs: IMAGE_TAG,DOCKERHUB_USERNAME,DOCKERHUB_TOKEN
           script: |
-            IMAGE_TAG=${{ needs.build-and-push.outputs.image_tag }}
-            DOCKERHUB_USERNAME=${{ secrets.DOCKERHUB_USERNAME }}
+            set -Eeuo pipefail
 
             cd /var/www/grd-mad
 
-            if [ ! -f docker-compose.yml ]; then
-              echo "❌ docker-compose.yml não encontrado!"
-              exit 1
+            # (Opcional) login se o repo do Docker Hub for privado
+            if [ -n "${DOCKERHUB_TOKEN:-}" ]; then
+              echo "${DOCKERHUB_TOKEN}" | docker login -u "${DOCKERHUB_USERNAME}" --password-stdin || true
             fi
 
-            export IMAGE_TAG DOCKERHUB_USERNAME
-            envsubst < docker-compose.yml > docker-compose.rendered.yml
+            # Garanta que o compose referencia ${DOCKERHUB_USERNAME}/grdmad:${IMAGE_TAG}
+            grep -q 'grdmad:${IMAGE_TAG}' docker-compose.yml
 
-            docker compose pull
-            docker stack deploy -c docker-compose.rendered.yml grdmad
+            # Puxa a imagem alvo (útil antes do deploy, principalmente em Swarm)
+            docker pull "${DOCKERHUB_USERNAME}/grdmad:${IMAGE_TAG}" || true
 
-            docker image prune -f
-            docker builder prune -f
+            # Faz o deploy em Swarm com auth para os nós conseguirem puxar a imagem
+            docker stack deploy --with-registry-auth -c docker-compose.yml grdmad
+
+            # Limpeza
+            docker image prune -f || true
+            docker builder prune -f || true
