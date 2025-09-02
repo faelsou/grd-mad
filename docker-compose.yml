@@ -1,8 +1,8 @@
-version: '3.8'
+version: '3.9'
 
 services:
   site:
-    image: nginx:alpine
+    image: faelsouz/grdmad:${IMAGE_TAG}
     deploy:
       replicas: 1
       restart_policy:
