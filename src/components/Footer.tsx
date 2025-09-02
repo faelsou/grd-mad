@@ -18,8 +18,8 @@ const Footer = () => {
               </p>
               
               <div className="flex space-x-4">
-                <a href="#" className="text-stone-400 hover:text-amber-500 transition-colors">
-                  <Instagram size={24} />
+                <a href="https://www.instagram.com/grd_mad/" target="_blank" rel="noopener noreferrer" className="text-stone-400 hover:text-amber-500 transition-colors p-2 hover:bg-stone-800 rounded-lg">
+                  <Instagram size={20} className="sm:w-6 sm:h-6" />
                 </a>
               </div>
             </div>

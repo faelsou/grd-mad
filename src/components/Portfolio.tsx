@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState('todos');
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState('');
 
   const filters = [
     { id: 'todos', label: 'Todos' },
@@ -55,6 +57,16 @@ const Portfolio = () => {
     ? projects 
     : projects.filter(project => project.category === activeFilter);
 
+  const openModal = (imageSrc) => {
+    setSelectedImage(imageSrc);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setSelectedImage('');
+  };
+
   return (
     <section id="portfolio" className="py-20 bg-stone-900">
       <div className="container mx-auto px-6">
@@ -90,7 +102,8 @@ const Portfolio = () => {
             {filteredProjects.map((project) => (
               <div 
                 key={project.id} 
-                className="group relative bg-stone-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-all duration-300"
+                className="group relative bg-stone-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-all duration-300 cursor-pointer" // Adicionado cursor-pointer
+                onClick={() => openModal(project.image)} // Adicionado onClick para abrir o modal
               >
                 <div className="aspect-video overflow-hidden">
                   <img
@@ -103,7 +116,7 @@ const Portfolio = () => {
                   <div className="absolute bottom-0 left-0 right-0 p-6">
                     <h3 className="text-xl font-bold text-stone-50 mb-2">{project.title}</h3>
                     <button className="text-amber-500 hover:text-amber-400 font-semibold">
-                      Ver detalhes →
+                      Ver imagem → {/* Mudei o texto do botão para ser mais descritivo */}
                     </button>
                   </div>
                 </div>
@@ -112,6 +125,31 @@ const Portfolio = () => {
           </div>
         </div>
       </div>
+
+      {/* Modal */}
+      {modalOpen && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4"
+          onClick={closeModal} // Fecha o modal ao clicar fora da imagem
+        >
+          <div 
+            className="relative bg-stone-900 p-4 rounded-lg shadow-lg max-w-4xl max-h-[90vh] overflow-auto"
+            onClick={e => e.stopPropagation()} // Impede que o clique dentro do modal feche-o
+          >
+            <button 
+              onClick={closeModal}
+              className="absolute top-2 right-2 text-stone-50 hover:text-amber-500 text-3xl font-bold p-2"
+            >
+              &times;
+            </button>
+            <img 
+              src={selectedImage} 
+              alt="Imagem em tamanho real" 
+              className="max-w-full max-h-[80vh] object-contain"
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 };
