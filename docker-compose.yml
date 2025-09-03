@@ -8,24 +8,29 @@ services:
       restart_policy:
         condition: on-failure
       labels:
-        - "traefik.enable=true"
-        - "traefik.docker.network=network_public"
-
+        - traefik.enable=true
+        - traefik.docker.network=network_public
+    
         # HTTP -> HTTPS
-        - "traefik.http.routers.grdmad-web.rule=Host(`grdmad.com.br`,`www.grdmad.com.br`)"
-        - "traefik.http.routers.grdmad-web.entrypoints=web"
-        - "traefik.http.routers.grdmad-web.middlewares=grdmad-https-redirect"
-        - "traefik.http.middlewares.grdmad-https-redirect.redirectscheme.scheme=https"
-        - "traefik.http.middlewares.grdmad-https-redirect.redirectscheme.permanent=true"
-
+        - traefik.http.routers.grdmad-web.rule=Host(`grdmad.com.br`,`www.grdmad.com.br`)
+        - traefik.http.routers.grdmad-web.entrypoints=web
+        - traefik.http.routers.grdmad-web.middlewares=grdmad-https-redirect
+        - traefik.http.middlewares.grdmad-https-redirect.redirectscheme.scheme=https
+        - traefik.http.middlewares.grdmad-https-redirect.redirectscheme.permanent=true
+        - traefik.http.routers.grdmad-web.service=grdmad          # 👈 novo
+    
         # HTTPS
-        - "traefik.http.routers.grdmad-secure.rule=Host(`grdmad.com.br`,`www.grdmad.com.br`)"
-        - "traefik.http.routers.grdmad-secure.entrypoints=websecure"
-        - "traefik.http.routers.grdmad-secure.tls=true"
-        - "traefik.http.routers.grdmad-secure.tls.certresolver=letsencryptresolver"
-
+        - traefik.http.routers.grdmad-secure.rule=Host(`grdmad.com.br`,`www.grdmad.com.br`)
+        - traefik.http.routers.grdmad-secure.entrypoints=websecure
+        - traefik.http.routers.grdmad-secure.tls=true
+        - traefik.http.routers.grdmad-secure.tls.certresolver=letsencryptresolver
+        - traefik.http.routers.grdmad-secure.service=grdmad       # 👈 novo
+        - traefik.http.routers.grdmad-secure.tls.domains[0].main=grdmad.com.br     # 👈 ajuda o ACME
+        - traefik.http.routers.grdmad-secure.tls.domains[0].sans=www.grdmad.com.br # 👈 idem
+    
         # Porta interna do Nginx
-        - "traefik.http.services.grdmad.loadbalancer.server.port=80"
+        - traefik.http.services.grdmad.loadbalancer.server.port=80
+
 
     # Use caminho ABSOLUTO no Swarm (recomendado)
     volumes:
