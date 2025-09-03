@@ -79,17 +79,24 @@ jobs:
           envs: IMAGE_TAG,DOCKERHUB_USERNAME,DOCKERHUB_TOKEN
           script: |
             set -Eeuo pipefail
+            set -x
             cd /var/www/grd-mad
-  
+          
             if [ -n "${DOCKERHUB_TOKEN:-}" ]; then
               echo "${DOCKERHUB_TOKEN}" | docker login -u "${DOCKERHUB_USERNAME}" --password-stdin || true
             fi
-  
-            # compose deve referenciar ${DOCKERHUB_USERNAME}/grd-mad:${IMAGE_TAG}
-            grep -q 'grd-mad:${IMAGE_TAG}' docker-compose.yml
-  
+          
+            # compose deve referenciar ${DOCKERHUB_USERNAME}/grdmad:${IMAGE_TAG}
+            if ! grep -q 'grdmad:${IMAGE_TAG}' docker-compose.yml; then
+              echo "::warning::docker-compose.yml não parece usar ${IMAGE_TAG}; seguindo mesmo assim."
+            fi
+          
             docker pull "${DOCKERHUB_USERNAME}/grdmad:${IMAGE_TAG}" || true
             docker stack deploy --with-registry-auth -c docker-compose.yml grdmad
-  
+          
+            docker stack ps grdmad || true
+            docker service ls | grep grdmad || true
+          
             docker image prune -f || true
             docker builder prune -f || true
+
