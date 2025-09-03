@@ -58,14 +58,6 @@ const Header = () => {
             >
               Catálogo de Cores
             </a>
-            <a
-              href="/catalogo-cores.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="md:hidden bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 hover:from-pink-600 hover:via-purple-600 hover:to-indigo-600 text-white px-3 py-2 rounded-lg font-medium text-sm transition-colors"
-            >
-              Catálogo de Cores
-            </a>
             <button
               className="md:hidden text-stone-50 hover:text-amber-500 transition-colors"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
