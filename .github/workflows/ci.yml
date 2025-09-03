@@ -30,8 +30,8 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/grd-mad:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/grd-mad:${{ steps.meta.outputs.tag }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/grdmad:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/grdmad:${{ steps.meta.outputs.tag }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -86,10 +86,10 @@ jobs:
             fi
   
             # compose deve referenciar ${DOCKERHUB_USERNAME}/grd-mad:${IMAGE_TAG}
-            grep -q 'grd-mad:${IMAGE_TAG}' docker-compose.yml
+            grep -q 'grdmad:${IMAGE_TAG}' docker-compose.yml
   
-            docker pull "${DOCKERHUB_USERNAME}/grd-mad:${IMAGE_TAG}" || true
-            docker stack deploy --with-registry-auth -c docker-compose.yml grd-mad
+            docker pull "${DOCKERHUB_USERNAME}/grdmad:${IMAGE_TAG}" || true
+            docker stack deploy --with-registry-auth -c docker-compose.yml grdmad
   
             docker image prune -f || true
             docker builder prune -f || true
