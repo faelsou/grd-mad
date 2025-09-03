@@ -49,23 +49,30 @@ const Header = () => {
             ))}
           </nav>
 
-          <div className="hidden md:flex items-center">
+          <div className="flex items-center space-x-4">
             <a
               href="/catalogo-cores.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 hover:from-pink-600 hover:via-purple-600 hover:to-indigo-600 text-white px-4 py-2 rounded-lg font-medium inline-block transition-colors"
+              className="hidden md:inline-block bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 hover:from-pink-600 hover:via-purple-600 hover:to-indigo-600 text-white px-4 py-2 rounded-lg font-medium transition-colors"
             >
               Catálogo de Cores
             </a>
+            <a
+              href="/catalogo-cores.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="md:hidden bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 hover:from-pink-600 hover:via-purple-600 hover:to-indigo-600 text-white px-3 py-2 rounded-lg font-medium text-sm transition-colors"
+            >
+              Catálogo de Cores
+            </a>
+            <button
+              className="md:hidden text-stone-50 hover:text-amber-500 transition-colors"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
-
-          <button
-            className="md:hidden text-stone-50 hover:text-amber-500 transition-colors"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
         </div>
 
         {isMenuOpen && (
