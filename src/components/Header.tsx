@@ -24,7 +24,7 @@ const Header = () => {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? 'bg-stone-900/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
     }`}>
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between py-4">
           <div className="flex items-center">
             <img
@@ -49,7 +49,7 @@ const Header = () => {
             ))}
           </nav>
 
-            <div className="hidden md:flex items-center">
+          <div className="hidden md:flex items-center">
             <a
               href="/catalogo-cores.pdf"
               target="_blank"
@@ -69,7 +69,7 @@ const Header = () => {
         </div>
 
         {isMenuOpen && (
-          <div className="md:hidden pb-4">
+          <div className="md:hidden pb-4 space-y-4">
             <nav className="flex flex-col space-y-4">
               {menuItems.map((item) => (
                 <a
@@ -82,6 +82,14 @@ const Header = () => {
                 </a>
               ))}
             </nav>
+            <a
+              href="/catalogo-cores.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block text-center bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 hover:from-pink-600 hover:via-purple-600 hover:to-indigo-600 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+            >
+              Catálogo de Cores
+            </a>
           </div>
         )}
       </div>
