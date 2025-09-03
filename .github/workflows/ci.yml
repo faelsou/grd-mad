@@ -1,4 +1,4 @@
-name: CI/CD Deploy grd-mad
+name: CI/CD Deploy grdmad
 
 on:
   push:
