@@ -34,7 +34,7 @@ services:
 
     # Use caminho ABSOLUTO no Swarm (recomendado)
     volumes:
-      - /var/www/grdmad/dist:/usr/share/nginx/html:ro
+      - /var/www/grd-mad/dist:/usr/share/nginx/html:ro
 
     networks:
       - network_public
