@@ -38,8 +38,8 @@ O repositório inclui um `Dockerfile` multistage que constrói o projeto e o exe
 
 Para construir e executar a imagem manualmente:
 ```bash
-docker build -t studio-r-planejados .
-docker run -p 4173:4173 studio-r-planejados
+docker build -t grd-mad .
+docker run -p 4173:4173 grd-mad
 ```
 
 ### Docker Compose

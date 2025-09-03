@@ -12,7 +12,6 @@ const Hero = () => {
         }}
       ></div>
       
-      <div className="relative container mx-auto px-4 sm:px-6 md:px-8 text-center">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl font-bold text-stone-50 mb-6 leading-tight">
             Design Sob Medida para
