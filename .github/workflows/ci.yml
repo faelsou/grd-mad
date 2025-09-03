@@ -1,4 +1,4 @@
-name: CI/CD Deploy grdmad
+name: CI/CD Deploy grd-mad
 
 on:
   push:
@@ -86,7 +86,7 @@ jobs:
             fi
   
             # compose deve referenciar ${DOCKERHUB_USERNAME}/grd-mad:${IMAGE_TAG}
-            grep -q 'grdmad:${IMAGE_TAG}' docker-compose.yml
+            grep -q 'grd-mad:${IMAGE_TAG}' docker-compose.yml
   
             docker pull "${DOCKERHUB_USERNAME}/grdmad:${IMAGE_TAG}" || true
             docker stack deploy --with-registry-auth -c docker-compose.yml grdmad
