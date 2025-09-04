@@ -16,7 +16,7 @@ import sala6      from "../assets/Portifolio/salas/sala27.jpg";
 import quarto1    from "../assets/Portifolio/quartos/quarto1.jpg";
 //import quarto2    from "../assets/Portifolio/quartos/quarto6.JPEG";
 import banheiro1  from "../assets/Portifolio/banheiro/banheiro1.jpg";
-//import banheiro2  from "../assets/Portifolio/banheiro/banheiro2.jpg";
+import banheiro2  from "../assets/Portifolio/banheiro/banheiro2.jpg";
 //import banheiro2  from "../assets/Portifolio/banheiro/banheiro2.jpg";
 import corp1      from "../assets/Portifolio/corporativo/corp1.jpg";
 import corp2      from "../assets/Portifolio/corporativo/corp13.jpg";
@@ -90,8 +90,8 @@ const Portfolio = () => {
     },
     {
       id: 8,
-      category: "cozinhas",
-      title: "Cozinha Gourmet",
+      category: "salas",
+      title: "Sala",
       image: sala4,
     },
     {    
@@ -100,12 +100,12 @@ const Portfolio = () => {
       title: "Sala",
       image: sala3,
     },
-    {
-      id: 10,
-      category: "salas",
-      title: "Sala",
-      image: sala4,
-    },
+//    {
+//      id: 10,
+//      category: "salas",
+//      title: "Sala",
+//      image: sala4,
+//    },
 //    {
 //      id: 11,
 //      category: "salas",
@@ -125,16 +125,22 @@ const Portfolio = () => {
       image: corp2,
     },
     {
-      id: 11,
+      id: 13,
       category: "corporativo",
       title: "corporativo",
       image: corp3,
     },
     {
-      id: 11,
+      id: 14,
       category: "corporativo",
       title: "corporativo",
       image: corp4,
+    },
+    {
+      id: 15,
+      category: "banheiros",
+      title: "Banheiro",
+      image: banheiro2,
     },
     
   ] as const;
