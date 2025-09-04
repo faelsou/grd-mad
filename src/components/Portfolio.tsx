@@ -1,70 +1,156 @@
-import React, { useState } from 'react';
+import { useState } from "react";
+
+// IMPORTS das imagens locais (ajuste os que quiser usar)
+import cozPremium from "../assets/Portifolio/cozinhas/cozinha-premium.jpg";
+import cozinha1   from "../assets/Portifolio/cozinhas/cozinha1.jpg";
+//import cozinha2   from "../assets/Portifolio/cozinhas/5.jpg";
+//import cozinha3   from "../assets/Portifolio/cozinhas/6.JPEG";
+//import cozinha4   from "../assets/Portifolio/cozinhas/9.JPEG";
+//import cozinha5   from "../assets/Portifolio/cozinhas/cozinha2.jpg";
+import sala1      from "../assets/Portifolio/salas/sala1.jpg";
+import sala2      from "../assets/Portifolio/salas/sala2.jpg";
+import sala3      from "../assets/Portifolio/salas/sala8.jpg";
+import sala4      from "../assets/Portifolio/salas/sala12.jpg";
+//import sala5      from "../assets/Portifolio/salas/sala13.JPEG";
+import sala6      from "../assets/Portifolio/salas/sala27.jpg";
+import quarto1    from "../assets/Portifolio/quartos/quarto1.jpg";
+//import quarto2    from "../assets/Portifolio/quartos/quarto6.JPEG";
+import banheiro1  from "../assets/Portifolio/banheiro/banheiro1.jpg";
+//import banheiro2  from "../assets/Portifolio/banheiro/banheiro2.jpg";
+//import banheiro2  from "../assets/Portifolio/banheiro/banheiro2.jpg";
+import corp1      from "../assets/Portifolio/corporativo/corp1.jpg";
+import corp2      from "../assets/Portifolio/corporativo/corp13.jpg";
+import corp3      from "../assets/Portifolio/corporativo/corp20.jpg";
+import corp4      from "../assets/Portifolio/corporativo/corp21.jpg";
+//import pesp1      from "../assets/Portifolio/projetos-especiais/gourmet3.jpg";
+//import pesp2      from "../assets/Portifolio/projetos-especiais/gourmet11.jpg";
+
+
 
 const Portfolio = () => {
-  const [activeFilter, setActiveFilter] = useState('todos');
+  const [activeFilter, setActiveFilter] = useState<
+    "todos" | "cozinhas" | "salas" | "quartos" | "corporativo" | "especiais"
+  >("todos");
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState('');
+  const [selectedImage, setSelectedImage] = useState("");
 
   const filters = [
-    { id: 'todos', label: 'Todos' },
-    { id: 'cozinhas', label: 'Cozinhas' },
-    { id: 'salas', label: 'Salas' },
-    { id: 'quartos', label: 'Quartos' },
-    { id: 'corporativo', label: 'Corporativo' },
-    { id: 'especiais', label: 'Projetos Especiais' }
-  ];
+    { id: "todos", label: "Todos" },
+    { id: "cozinhas", label: "Cozinhas" },
+    { id: "salas", label: "Salas" },
+    { id: "quartos", label: "Quartos" },
+    { id: "banheiros", label: "Banheiros" },
+    { id: "corporativo", label: "Corporativo" },
+    { id: "especiais", label: "Projetos Especiais" },
+  ] as const;
 
+  // Use as variáveis importadas em vez de strings /assets/...
   const projects = [
     {
       id: 1,
-      category: 'cozinhas',
-      title: 'Cozinha Moderna Premium',
-      image: 'https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop'
+      category: "cozinhas",
+      title: "Cozinha Moderna Premium",
+      image: cozPremium,
     },
     {
       id: 2,
-      category: 'salas',
-      title: 'Sala de Estar Elegante',
-      image: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop'
+      category: "salas",
+      title: "Sala de Estar Elegante",
+      image: sala1,
     },
     {
       id: 3,
-      category: 'quartos',
-      title: 'Quarto Casal Sofisticado',
-      image: 'https://images.pexels.com/photos/1454804/pexels-photo-1454804.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop'
+      category: "quartos",
+      title: "Quarto Casal Sofisticado",
+      image: quarto1,
     },
     {
       id: 4,
-      category: 'corporativo',
-      title: 'Escritório Executivo',
-      image: 'https://images.pexels.com/photos/1170412/pexels-photo-1170412.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop'
+      category: "corporativo",
+      title: "Escritório Executivo",
+      image: corp1,
     },
     {
       id: 5,
-      category: 'cozinhas',
-      title: 'Cozinha Gourmet',
-      image: 'https://images.pexels.com/photos/2062426/pexels-photo-2062426.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop'
+      category: "cozinhas",
+      title: "Cozinha Gourmet",
+      image: cozinha1,
     },
     {
       id: 6,
-      category: 'especiais',
-      title: 'Projeto Personalizado',
-      image: 'https://images.pexels.com/photos/1571453/pexels-photo-1571453.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop'
-    }
-  ];
+      category: "banheiros",
+      title: "Banheiro Contemporânea",
+      image: banheiro1,
+    },
+    {
+      id: 7,
+      category: "salas",
+      title: "Sala Integrada Contemporânea",
+      image: sala2,
+    },
+    {
+      id: 8,
+      category: "cozinhas",
+      title: "Cozinha Gourmet",
+      image: sala4,
+    },
+    {    
+      id: 9,
+      category: "salas",
+      title: "Sala",
+      image: sala3,
+    },
+    {
+      id: 10,
+      category: "salas",
+      title: "Sala",
+      image: sala4,
+    },
+//    {
+//      id: 11,
+//      category: "salas",
+//      title: "Sala",
+//      image: sala5,
+//    },
+    {
+      id: 11,
+      category: "salas",
+      title: "Sala",
+      image: sala6,
+    },
+    {
+      id: 12,
+      category: "corporativo",
+      title: "corporativo",
+      image: corp2,
+    },
+    {
+      id: 11,
+      category: "corporativo",
+      title: "corporativo",
+      image: corp3,
+    },
+    {
+      id: 11,
+      category: "corporativo",
+      title: "corporativo",
+      image: corp4,
+    },
+    
+  ] as const;
 
-  const filteredProjects = activeFilter === 'todos' 
-    ? projects 
-    : projects.filter(project => project.category === activeFilter);
+  const filteredProjects =
+    activeFilter === "todos"
+      ? projects
+      : projects.filter((p) => p.category === activeFilter);
 
-  const openModal = (imageSrc) => {
-    setSelectedImage(imageSrc);
+  const openModal = (src: string) => {
+    setSelectedImage(src);
     setModalOpen(true);
   };
-
   const closeModal = () => {
     setModalOpen(false);
-    setSelectedImage('');
+    setSelectedImage("");
   };
 
   return (
@@ -80,43 +166,46 @@ const Portfolio = () => {
             </p>
           </div>
 
-          {/* Filter Buttons */}
           <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {filters.map((filter) => (
+            {filters.map((f) => (
               <button
-                key={filter.id}
-                onClick={() => setActiveFilter(filter.id)}
+                key={f.id}
+                onClick={() => setActiveFilter(f.id)}
                 className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
-                  activeFilter === filter.id
-                    ? 'bg-amber-500 text-stone-900'
-                    : 'bg-stone-800 text-stone-300 hover:bg-stone-700 hover:text-amber-500'
+                  activeFilter === f.id
+                    ? "bg-amber-500 text-stone-900"
+                    : "bg-stone-800 text-stone-300 hover:bg-stone-700 hover:text-amber-500"
                 }`}
               >
-                {filter.label}
+                {f.label}
               </button>
             ))}
           </div>
 
-          {/* Project Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project) => (
-              <div 
-                key={project.id} 
-                className="group relative bg-stone-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-all duration-300 cursor-pointer" // Adicionado cursor-pointer
-                onClick={() => openModal(project.image)} // Adicionado onClick para abrir o modal
+            {filteredProjects.map((p) => (
+              <div
+                key={p.id}
+                className="group relative bg-stone-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-all duration-300 cursor-pointer"
+                onClick={() => openModal(p.image)}
               >
                 <div className="aspect-video overflow-hidden">
                   <img
-                    src={project.image}
-                    alt={project.title}
+                    src={p.image}
+                    alt={p.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    loading="lazy"
+                    onError={(e) => {
+                      // opcional: fallback de erro visual
+                      (e.currentTarget as HTMLImageElement).style.opacity = "0";
+                    }}
                   />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-xl font-bold text-stone-50 mb-2">{project.title}</h3>
+                    <h3 className="text-xl font-bold text-stone-50 mb-2">{p.title}</h3>
                     <button className="text-amber-500 hover:text-amber-400 font-semibold">
-                      Ver imagem → {/* Mudei o texto do botão para ser mais descritivo */}
+                      Ver imagem →
                     </button>
                   </div>
                 </div>
@@ -126,25 +215,25 @@ const Portfolio = () => {
         </div>
       </div>
 
-      {/* Modal */}
       {modalOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4"
-          onClick={closeModal} // Fecha o modal ao clicar fora da imagem
+          onClick={closeModal}
         >
-          <div 
+          <div
             className="relative bg-stone-900 p-4 rounded-lg shadow-lg max-w-4xl max-h-[90vh] overflow-auto"
-            onClick={e => e.stopPropagation()} // Impede que o clique dentro do modal feche-o
+            onClick={(e) => e.stopPropagation()}
           >
-            <button 
+            <button
               onClick={closeModal}
               className="absolute top-2 right-2 text-stone-50 hover:text-amber-500 text-3xl font-bold p-2"
+              aria-label="Fechar"
             >
               &times;
             </button>
-            <img 
-              src={selectedImage} 
-              alt="Imagem em tamanho real" 
+            <img
+              src={selectedImage}
+              alt="Imagem em tamanho real"
               className="max-w-full max-h-[80vh] object-contain"
             />
           </div>
