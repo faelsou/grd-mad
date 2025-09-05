@@ -2,7 +2,7 @@ name: CI/CD Deploy GrdMad
 
 on:
   push:
-    branches: [ main ]
+    branches: [ homol ]
 
 jobs:
   build-and-push:
