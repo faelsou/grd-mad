@@ -30,12 +30,8 @@
 # ---------- Build ----------
 FROM node:20-alpine AS build
 WORKDIR /app
-
-# Cache de deps
 COPY package*.json ./
 RUN npm ci --include=dev
-
-# Build
 COPY . .
 ARG VITE_COMMIT_SHA=local
 ENV VITE_COMMIT_SHA=$VITE_COMMIT_SHA
@@ -45,15 +41,41 @@ RUN npm run build && \
 # ---------- Runtime ----------
 FROM nginx:1.29-alpine
 
-# Limpa HTML padrão e copia artefatos
+# Limpa conteúdo padrão e copia o build
 RUN rm -rf /usr/share/nginx/html/*
 COPY --from=build /app/dist/ /usr/share/nginx/html/
 
-# Copia conf do Nginx (SPA + cache + bloqueios)
-COPY ops/nginx/default.conf /etc/nginx/conf.d/default.conf
+# Escreve a default.conf diretamente
+RUN printf 'server {\n\
+  listen 80;\n\
+  server_name _;\n\
+  root /usr/share/nginx/html;\n\
+  index index.html;\n\
+  location /assets/ {\n\
+    try_files $uri =404;\n\
+    access_log off;\n\
+    add_header Cache-Control "public, max-age=31536000, immutable" always;\n\
+    expires 365d;\n\
+  }\n\
+  location = /index.html {\n\
+    try_files $uri =404;\n\
+    add_header Cache-Control "no-cache, no-store, must-revalidate" always;\n\
+    expires -1;\n\
+  }\n\
+  location / {\n\
+    try_files $uri /index.html;\n\
+    add_header Cache-Control "no-cache, no-store, must-revalidate" always;\n\
+  }\n\
+  location ~ ^/(src|node_modules|@vite)/ { return 404; }\n\
+  location = /vite.svg { return 404; }\n\
+  location ~* /(wp-login\\.php|xmlrpc\\.php|wlwmanifest\\.xml|wp-includes/|wp-admin/) { return 404; }\n\
+  include /etc/nginx/mime.types;\n\
+  default_type application/octet-stream;\n\
+  gzip on;\n\
+  gzip_min_length 1024;\n\
+  gzip_types text/plain text/css application/javascript application/json application/xml image/svg+xml;\n\
+}\n' > /etc/nginx/conf.d/default.conf
 
-# Healthcheck opcional
 HEALTHCHECK --interval=30s --timeout=3s --retries=3 CMD wget -qO- http://127.0.0.1/ >/dev/null 2>&1 || exit 1
-
 EXPOSE 80
 CMD ["nginx","-g","daemon off;"]
