@@ -11,15 +11,17 @@ import WhatsAppFloat from './components/WhatsAppFloat';
 
 function App() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-stone-950 text-stone-50">
       <Header />
-      <Hero />
-      <About />
-      <Differentials />
-      <Portfolio />
-      <Testimonials />
-      <CTA />
-      <Footer />
+      <main className="pt-16">
+        <Hero />
+        <About />
+        <Differentials />
+        <Portfolio />
+        <Testimonials />
+        <CTA />
+        <Footer />
+      </main>
       <WhatsAppFloat />
     </div>
   );
