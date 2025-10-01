@@ -17,8 +17,8 @@ const CTA = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <a 
-                href="https://wa.me/5511945237617?text=Olá! Gostaria de solicitar um orçamento na GRD MAD."
+              <a
+                href="https://wa.me/5511978986350?text=Olá! Gostaria de solicitar um orçamento na GRD MAD."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group bg-amber-500 hover:bg-amber-600 text-stone-900 px-8 py-4 rounded-lg font-bold text-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
@@ -29,7 +29,7 @@ const CTA = () => {
               </a>
               
               <a
-                href="https://wa.me/5511945237617?text=Olá! Gostaria de ser cliente da GRD MAD."
+                href="https://wa.me/5511978986350?text=Olá! Gostaria de ser cliente da GRD MAD."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group border-2 border-stone-400 hover:border-amber-500 text-stone-200 hover:text-amber-500 px-8 py-4 rounded-lg font-bold text-lg transition-all duration-300 flex items-center justify-center gap-2"
@@ -47,7 +47,7 @@ const CTA = () => {
                 <Phone size={28} />
               </div>
               <h3 className="text-xl font-bold text-stone-50 mb-2">Contatos</h3>
-              <a href="tel:+5511945237617" className="text-stone-300 hover:text-amber-500 transition-colors">(11) 94523-7617</a>
+              <a href="tel:+5511978986350" className="text-stone-300 hover:text-amber-500 transition-colors">(11) 97898-6350</a>
               <p className="text-stone-300"></p>
               <a href="mailto:grdmadmoveis@gmail.com" className="text-stone-300 hover:text-amber-500 transition-colors">
                 grdmadmoveis@gmail.com
@@ -69,7 +69,7 @@ const CTA = () => {
               </div>
               <h3 className="text-xl font-bold text-stone-50 mb-2">WhatsApp</h3>
               <a
-                href="https://wa.me/5511945237617?text=Olá! Gostaria de conversar no WhatsApp."
+                href="https://wa.me/5511978986350?text=Olá! Gostaria de conversar no WhatsApp."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block bg-green-500 hover:bg-green-600 text-stone-50 px-4 py-2 rounded-lg font-medium transition-colors"
