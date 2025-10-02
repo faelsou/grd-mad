@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Menu, X } from 'lucide-react';
 
 const Header = () => {
@@ -9,9 +9,61 @@ const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const closeMenu = useCallback(() => {
+    setIsMenuOpen(false);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    const handleRouteChange = () => {
+      closeMenu();
+    };
+
+    window.addEventListener('hashchange', handleRouteChange);
+    window.addEventListener('popstate', handleRouteChange);
+    window.addEventListener('load', handleRouteChange);
+
+    return () => {
+      window.removeEventListener('hashchange', handleRouteChange);
+      window.removeEventListener('popstate', handleRouteChange);
+      window.removeEventListener('load', handleRouteChange);
+    };
+  }, [closeMenu]);
+
+  useEffect(() => {
+    const media = window.matchMedia('(min-width: 768px)');
+    const handleChange = () => {
+      if (media.matches) {
+        closeMenu();
+      }
+    };
+
+    if (typeof media.addEventListener === 'function') {
+      media.addEventListener('change', handleChange);
+    } else if (typeof media.addListener === 'function') {
+      media.addListener(handleChange);
+    }
+
+    handleChange();
+
+    return () => {
+      if (typeof media.removeEventListener === 'function') {
+        media.removeEventListener('change', handleChange);
+      } else if (typeof media.removeListener === 'function') {
+        media.removeListener(handleChange);
+      }
+    };
+  }, [closeMenu]);
 
   const menuItems = [
     { label: 'Fábrica', href: '#fabrica' },
@@ -25,7 +77,7 @@ const Header = () => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 h-16 transition-all duration-300 ${
+        className={`sticky top-0 z-[9999] h-16 w-full text-stone-50 transition-all duration-300 ${
           shouldShowSolidBackground
             ? 'bg-stone-900/95 backdrop-blur-sm shadow-lg'
             : 'bg-stone-950/95 md:bg-transparent md:shadow-none md:backdrop-blur-none'
@@ -67,7 +119,7 @@ const Header = () => {
             <button
               type="button"
               className="text-stone-50 transition-colors hover:text-amber-500 md:hidden"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onClick={() => setIsMenuOpen((prev) => !prev)}
               aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'}
               aria-expanded={isMenuOpen}
             >
@@ -77,40 +129,50 @@ const Header = () => {
         </div>
       </header>
 
-      {isMenuOpen && (
-        <div className="fixed inset-x-0 top-16 bottom-0 z-40 md:hidden">
-          <div className="relative h-full">
+      <nav
+        aria-hidden={!isMenuOpen}
+        aria-modal={isMenuOpen}
+        className={`fixed inset-0 z-[10000] bg-stone-950/95 text-stone-100 backdrop-blur-sm transition-all duration-200 md:hidden ${
+          isMenuOpen ? 'pointer-events-auto opacity-100 translate-y-0' : 'pointer-events-none opacity-0 -translate-y-2'
+        }`}
+        role="dialog"
+      >
+        <div className="flex h-full flex-col px-6 pb-10 pt-20">
+          <div className="absolute inset-x-0 top-0 flex h-16 items-center justify-between px-6">
+            <div className="text-lg font-semibold tracking-wide text-stone-50">Menu</div>
             <button
               type="button"
               aria-label="Fechar menu"
-              className="absolute inset-0 bg-black/40"
-              onClick={() => setIsMenuOpen(false)}
-            />
-            <div className="relative z-10 ml-auto flex h-full w-72 flex-col border-l border-stone-800 bg-stone-950/95 px-6 py-8 backdrop-blur-md">
-              <nav className="flex flex-1 flex-col space-y-6">
-                {menuItems.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    className="text-lg text-stone-100 transition-colors duration-200 hover:text-amber-500"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.label}
-                  </a>
-                ))}
-              </nav>
-              <a
-                href="/catalogo-cores.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 block rounded-lg bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 px-4 py-3 text-center font-medium text-white transition-colors hover:from-pink-600 hover:via-purple-600 hover:to-indigo-600"
-              >
-                Catálogo de Cores
-              </a>
-            </div>
+              className="text-stone-50 transition-colors hover:text-amber-500"
+              onClick={closeMenu}
+            >
+              <X size={24} />
+            </button>
           </div>
+
+          <div className="mt-6 flex flex-1 flex-col space-y-6">
+            {menuItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="text-lg font-medium text-stone-100 transition-colors duration-200 hover:text-amber-500"
+                onClick={closeMenu}
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+          <a
+            href="/catalogo-cores.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 block rounded-lg bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 px-4 py-3 text-center font-medium text-white transition-colors hover:from-pink-600 hover:via-purple-600 hover:to-indigo-600"
+            onClick={closeMenu}
+          >
+            Catálogo de Cores
+          </a>
         </div>
-      )}
+      </nav>
     </>
   );
 };
