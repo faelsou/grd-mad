@@ -72,15 +72,13 @@ const Header = () => {
     { label: 'Contato', href: '#contato' }
   ];
 
-  const shouldShowSolidBackground = isScrolled || isMenuOpen;
+  const shouldApplyElevatedStyles = isScrolled || isMenuOpen;
 
   return (
     <>
       <header
-        className={`sticky top-0 z-[9999] h-16 w-full text-stone-50 transition-all duration-300 ${
-          shouldShowSolidBackground
-            ? 'bg-stone-900/95 backdrop-blur-sm shadow-lg'
-            : 'bg-stone-950/95 md:bg-transparent md:shadow-none md:backdrop-blur-none'
+        className={`sticky top-0 z-[9999] h-16 w-full bg-stone-950/95 text-stone-50 transition-all duration-300 ${
+          shouldApplyElevatedStyles ? 'backdrop-blur-sm shadow-lg' : ''
         }`}
       >
         <div className="container mx-auto flex h-full items-center justify-between px-4 sm:px-6">
