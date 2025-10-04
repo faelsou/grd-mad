@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Menu, X } from 'lucide-react';
 
 const Header = () => {
@@ -127,16 +127,18 @@ const Header = () => {
         </div>
       </header>
 
+      {/* Menu Mobile - Fundo sempre escuro */}
       <nav
         aria-hidden={!isMenuOpen}
         aria-modal={isMenuOpen}
-        className={`fixed inset-0 z-[10000] bg-stone-950/95 text-stone-100 backdrop-blur-sm transition-all duration-200 md:hidden ${
+        className={`fixed inset-0 z-[10000] bg-stone-950 text-stone-100 transition-all duration-200 md:hidden ${
           isMenuOpen ? 'pointer-events-auto opacity-100 translate-y-0' : 'pointer-events-none opacity-0 -translate-y-2'
         }`}
         role="dialog"
+        style={{ backgroundColor: '#0c0a09' }}
       >
-        <div className="flex h-full flex-col px-6 pb-10 pt-20">
-          <div className="absolute inset-x-0 top-0 flex h-16 items-center justify-between px-6">
+        <div className="flex h-full flex-col px-6 pb-10 pt-20 bg-stone-950">
+          <div className="absolute inset-x-0 top-0 flex h-16 items-center justify-between px-6 bg-stone-950">
             <div className="text-lg font-semibold tracking-wide text-stone-50">Menu</div>
             <button
               type="button"
