@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { MessageCircle } from 'lucide-react';
+import useWhatsAppLink from '../hooks/useWhatsAppLink';
 
 const WhatsAppFloat = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const whatsappLink = useWhatsAppLink({
+    message: 'Olá! Vim pelo site e preciso de ajuda.',
+    source: 'widget_whatsapp',
+  });
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -23,7 +28,8 @@ const WhatsAppFloat = () => {
       isVisible ? 'opacity-100 translate-y-0' : 'opacity-100 translate-y-0'
     }`}>
       <a
-        href="https://wa.me/5511978986350?text=Olá! Gostaria de solicitar um orçamento na GRD MAD."
+        href={whatsappLink.href}
+        onClick={whatsappLink.onClick}
         target="_blank"
         rel="noopener noreferrer"
         className="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 animate-pulse flex items-center justify-center"
