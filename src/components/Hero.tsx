@@ -1,7 +1,18 @@
 import React from "react";
 import { ArrowRight, MessageCircle, Users } from "lucide-react";
+import useWhatsAppLink from "../hooks/useWhatsAppLink";
 
 const Hero = () => {
+  const solicitarOrcamentoLink = useWhatsAppLink({
+    message: "Olá! Gostaria de solicitar um orçamento na GRD MAD.",
+    source: "cta_orcamento",
+  });
+
+  const sejaClienteLink = useWhatsAppLink({
+    message: "Olá! Tenho interesse em me tornar cliente da GRD MAD.",
+    source: "cta_seja_cliente",
+  });
+
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900 px-6 sm:px-8 py-24 sm:py-32">
       <div className="absolute inset-0 bg-black/40"></div>
@@ -32,7 +43,8 @@ const Hero = () => {
 
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center pt-4">
           <a
-            href="https://wa.me/5511978986350?text=Olá! Gostaria de solicitar um orçamento na GRD MAD."
+            href={solicitarOrcamentoLink.href}
+            onClick={solicitarOrcamentoLink.onClick}
             target="_blank"
             rel="noopener noreferrer"
             className="group bg-amber-500 hover:bg-amber-600 text-stone-900 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base md:text-lg transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
@@ -46,7 +58,10 @@ const Hero = () => {
           </a>
 
           <a
-            href="https://wa.me/5511978986350?text=Olá! Gostaria de ser cliente na GRD MAD."
+            href={sejaClienteLink.href}
+            onClick={sejaClienteLink.onClick}
+            target="_blank"
+            rel="noopener noreferrer"
             className="group bg-amber-500 hover:bg-amber-600 text-stone-900 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base md:text-lg transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
           >
             <Users size={20} />

@@ -1,7 +1,23 @@
 import React from 'react';
 import { ArrowRight, Users, Phone, MapPin, MessageCircle } from 'lucide-react';
+import useWhatsAppLink from '../hooks/useWhatsAppLink';
 
-const CTA = () => {
+export default function CTA() {
+  const solicitarOrcamentoLink = useWhatsAppLink({
+    message: 'Olá! Gostaria de solicitar um orçamento na GRD MAD.',
+    source: 'cta_orcamento',
+  });
+
+  const sejaClienteLink = useWhatsAppLink({
+    message: 'Olá! Tenho interesse em me tornar cliente da GRD MAD.',
+    source: 'cta_seja_cliente',
+  });
+
+  const contatoLink = useWhatsAppLink({
+    message: 'Olá! Entrei em contato pela página Contatos do site.',
+    source: 'pagina_contatos',
+  });
+
   return (
     <section id="contato" className="py-20 bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900">
       <div className="container mx-auto px-6">
@@ -12,13 +28,14 @@ const CTA = () => {
               Vamos criar algo <span className="text-amber-500">único</span> juntos?
             </h2>
             <p className="text-xl text-stone-300 mb-10 max-w-3xl mx-auto">
-              Entre em contato conosco e descubra como nossa fábrica pode atender suas necessidades 
+              Entre em contato conosco e descubra como nossa fábrica pode atender suas necessidades
               com móveis planejados de alta qualidade e tecnologia de ponta.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <a
-                href="https://wa.me/5511978986350?text=Olá! Gostaria de solicitar um orçamento na GRD MAD."
+                href={solicitarOrcamentoLink.href}
+                onClick={solicitarOrcamentoLink.onClick}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group bg-amber-500 hover:bg-amber-600 text-stone-900 px-8 py-4 rounded-lg font-bold text-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
@@ -27,9 +44,10 @@ const CTA = () => {
                 Solicitar Orçamento
                 <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={20} />
               </a>
-              
+
               <a
-                href="https://wa.me/5511978986350?text=Olá! Gostaria de ser cliente da GRD MAD."
+                href={sejaClienteLink.href}
+                onClick={sejaClienteLink.onClick}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group border-2 border-stone-400 hover:border-amber-500 text-stone-200 hover:text-amber-500 px-8 py-4 rounded-lg font-bold text-lg transition-all duration-300 flex items-center justify-center gap-2"
@@ -69,7 +87,8 @@ const CTA = () => {
               </div>
               <h3 className="text-xl font-bold text-stone-50 mb-2">WhatsApp</h3>
               <a
-                href="https://wa.me/5511978986350?text=Olá! Gostaria de conversar no WhatsApp."
+                href={contatoLink.href}
+                onClick={contatoLink.onClick}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block bg-green-500 hover:bg-green-600 text-stone-50 px-4 py-2 rounded-lg font-medium transition-colors"
@@ -82,6 +101,4 @@ const CTA = () => {
       </div>
     </section>
   );
-};
-
-export default CTA;
+}
